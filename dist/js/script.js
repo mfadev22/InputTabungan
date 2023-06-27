@@ -42,7 +42,7 @@ ButtonSubmit.addEventListener("click", function () {
     InputTabungan.classList.add("border-red-500");
 
     AreaInputan.classList.remove("mt-10");
-    AreaInputan.classList.add("mt-5");
+    AreaInputan.classList.add("mt-4");
 
     AlertKosong.classList.remove("hidden");
     AlertKosong.classList.add("flex");
