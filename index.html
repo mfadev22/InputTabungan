@@ -4,7 +4,95 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Testing Html</title>
+    <link href="dist/output.css" rel="stylesheet" />
+    <title>Input Tabungan</title>
   </head>
-  <body></body>
+  <body>
+    <section id="form_input">
+      <div class="container mt-28">
+        <div class="flex flex-wrap">
+          <div class="w-full self-center px-4 py-2">
+            <div class="flex justify-center items-center flex-col mx-5">
+              <h1 class="text-3xl font-semibold text-primary">
+                Input Tabungan Hari ini
+              </h1>
+              <div class="mt-10">
+                <div class="flex items-center">
+                  <button
+                    class="bg-gray-200 hover:bg-blue-600 text-gray-800 font-semibold py-2 px-4 rounded-full mx-5 input_instan"
+                    value="5000"
+                  >
+                    Rp5.000
+                  </button>
+                  <button
+                    class="bg-gray-200 hover:bg-blue-600 text-gray-800 font-semibold py-2 px-4 rounded-full mx-5 input_instan"
+                    value="10000"
+                  >
+                    Rp10.000
+                  </button>
+                </div>
+              </div>
+              <div class="mt-10 area_inputan">
+                <div class="items-center justify-center hidden alert_kosong">
+                  <button
+                    class="bg-red-500 opacity-90 text-white rounded-2xl mx-5 input_instan py-2 px-3 mb-2 text-xs md:text-md"
+                  >
+                    Nominal Tidak Boleh Kosong
+                  </button>
+                </div>
+                <div class="flex items-center flex-col sm:flex-row">
+                  <label
+                    for="nominal"
+                    class="font-semibold text-lg text-primary"
+                    >Masukkan Nominal :
+                  </label>
+                  <input
+                    class="mx-2 py-2 rounded-lg border-solid border-4 border-primary text-center"
+                    type="number"
+                    id="input_tabungan"
+                    name="input_tabungan"
+                  />
+                </div>
+              </div>
+              <div class="mt-10">
+                <div class="item-center justify-center">
+                  <button
+                    class="px-8 py-4 bg-primary text-white font-semibold rounded-lg shadow-lg hover:bg-secondary lg:px-32 md:px-16 submit_tabungan"
+                  >
+                    Tabung
+                  </button>
+                  <button
+                    class="relative px-8 py-4 bg-primary text-white font-semibold rounded-lg shadow-lg hover:bg-secondary lg:px-32 md:px-16 hidden submit_loading"
+                  >
+                    <span class="mr-2">Loading..</span>
+                    <svg
+                      class="animate-spin h-5 w-5 absolute top-1/2 right-4 -mt-1/2"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        class="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        stroke-width="4"
+                      ></circle>
+                      <path
+                        class="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 004 12H0c0 3.042 1.135 5.824 3 7.938l3-1.375zM20 12c0-3.042-1.135-5.824-3-7.938l-3 1.375A7.962 7.962 0 0020 12h4a8 8 0 01-8 8v-4zm-2-5.291l3 1.375C22.865 11.176 24 8.394 24 5.292h-4a7.962 7.962 0 00-2 5.292z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script src="dist/js/script.js"></script>
 </html>
