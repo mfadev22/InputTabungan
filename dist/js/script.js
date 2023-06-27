@@ -118,3 +118,11 @@ ButtonSubmit.addEventListener("click", function () {
     AlertKosong.classList.add("flex");
   }
 });
+
+// Area CekTabungan
+const getButtonCekTabungan = document.querySelector("#CekTabungan");
+
+getButtonCekTabungan.addEventListener("click", () => {
+  alert("Sedang Dalam Pengembangan MfaDev");
+});
+// End Area Cek Tabungan
