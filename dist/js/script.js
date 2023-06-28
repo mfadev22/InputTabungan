@@ -123,6 +123,48 @@ ButtonSubmit.addEventListener("click", function () {
 const getButtonCekTabungan = document.querySelector("#CekTabungan");
 
 getButtonCekTabungan.addEventListener("click", () => {
-  alert("Sedang Dalam Pengembangan MfaDev");
+  let SHEET_ID = "1lilLxrKIz1Zcu1ScSxTU5oyhSXPVBlrEGgnalGTI_ac";
+  let SHEET_TITLE = "Total_dan_Pengeluaran";
+  let SHEET_RANGE = "I2:J7";
+
+  let FULL_URL =
+    "https://docs.google.com/spreadsheets/d/" +
+    SHEET_ID +
+    "/gviz/tq?sheet=" +
+    SHEET_TITLE +
+    "&range=" +
+    SHEET_RANGE;
+
+  fetch(FULL_URL)
+    .then((response) => {
+      return response.text();
+    })
+    .then((data) => {
+      let dataBaru = JSON.parse(data.substr(47).slice(0, -2));
+      OlahLagi = dataBaru.table.rows;
+
+      const dataAsosiatif = [];
+      const keys = [];
+
+      OlahLagi.forEach((row) => {
+        const key = row.c[0].v;
+        const value = row.c[1].f;
+
+        dataAsosiatif[key] = value;
+        keys.push(key);
+      });
+
+      console.log(dataAsosiatif);
+      console.log(keys);
+
+      alert(
+        "Masih Dalam Pengembangan. Sementara ini Datanya : " +
+          keys[0] +
+          " = " +
+          dataAsosiatif.total_tabungan
+      );
+    })
+    .catch((error) => {
+      console.error("Kesalahan:" + error);
+    });
 });
-// End Area Cek Tabungan
