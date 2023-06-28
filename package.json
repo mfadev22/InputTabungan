@@ -1,4 +1,9 @@
 {
+  "name": "belajar-menabung-yuk",
+  "version": "1.0.0",
+  "scripts": {
+    "dev-css": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+  },
   "devDependencies": {
     "tailwindcss": "^3.3.2"
   }
