@@ -121,8 +121,22 @@ ButtonSubmit.addEventListener("click", function () {
 
 // Area CekTabungan
 const getButtonCekTabungan = document.querySelector("#CekTabungan");
+const area_input_menabung = document.querySelector("#area_input_menabung");
+const modal_data_tabungan = document.querySelector("#modal_data_tabungan");
+const close_modal = document.querySelector("#close_modal");
+
+const total_tabungan = document.querySelector(".total_tabungan");
+const sisa_tabungan = document.querySelector(".sisa_tabungan");
+const target_fadlul = document.querySelector(".target_fadlul");
+const target_ismu = document.querySelector(".target_ismu");
+const total_target = document.querySelector(".total_target");
+const sisa_target = document.querySelector(".sisa_target");
+
+const loading_cektabung = document.querySelector(".loading_cektabung");
 
 getButtonCekTabungan.addEventListener("click", () => {
+  CekTabungan.classList.toggle("hidden");
+  loading_cektabung.classList.toggle("hidden");
   let SHEET_ID = "1lilLxrKIz1Zcu1ScSxTU5oyhSXPVBlrEGgnalGTI_ac";
   let SHEET_TITLE = "Total_dan_Pengeluaran";
   let SHEET_RANGE = "I2:J7";
@@ -154,17 +168,41 @@ getButtonCekTabungan.addEventListener("click", () => {
         keys.push(key);
       });
 
-      console.log(dataAsosiatif);
-      console.log(keys);
+      // console.log(dataAsosiatif);
+      // console.log(keys);
 
-      alert(
-        "Masih Dalam Pengembangan. Sementara ini Datanya : " +
-          keys[0] +
-          " = " +
-          dataAsosiatif.total_tabungan
-      );
+      // alert(
+      //   "Masih Dalam Pengembangan. Sementara ini Datanya : " +
+      //     keys[0] +
+      //     " = " +
+      //     dataAsosiatif.total_tabungan
+      // );
+      total_tabungan.textContent =
+        "Total Tabungan : " + dataAsosiatif.total_tabungan;
+      sisa_tabungan.textContent =
+        "Sisa Tabungan: " + dataAsosiatif.sisa_tabungan;
+      target_fadlul.textContent =
+        "TabungTarget Fadlul: " + dataAsosiatif.fadlul_target;
+      target_ismu.textContent =
+        "TTabungTarget Ismu: " + dataAsosiatif.ismu_target;
+      total_target.textContent =
+        "Total Tabungan Target (Pizza): " + dataAsosiatif.total_tabung_target;
+      sisa_target.textContent =
+        "Sisa Tabungan Target (Pizza): " + dataAsosiatif.sisa_tabung_target;
+
+      loading_cektabung.classList.toggle("hidden");
+      CekTabungan.classList.toggle("hidden");
+      area_input_menabung.classList.add("hidden");
+      modal_data_tabungan.classList.remove("hidden");
+      modal_data_tabungan.classList.add("flex");
     })
     .catch((error) => {
       console.error("Kesalahan:" + error);
     });
+});
+
+close_modal.addEventListener("click", () => {
+  area_input_menabung.classList.toggle("hidden");
+  modal_data_tabungan.classList.toggle("hidden");
+  modal_data_tabungan.classList.toggle("flex");
 });

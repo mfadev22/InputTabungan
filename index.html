@@ -31,10 +31,35 @@
               <li class="group">
                 <a
                   id="CekTabungan"
-                  class="mx-2 py-2 px-3 text-white bg-primary rounded-xl hover:font-semibold hover:text-base hover:bg-red-400 hover:py-3 cursor-pointer"
+                  class="mx-2 py-2 px-3 text-white bg-primary rounded-xl hover:font-semibold hover:text-base hover:bg-red-400 hover:px-4 cursor-pointer"
                   type="button"
                   >Cek Tabungan Yuk</a
                 >
+                <button
+                  class="relative mx-2 py-2 px-7 bg-primary text-white font-semibold rounded-lg shadow-lg hover:bg-secondary lg:px-32 md:px-16 loading_cektabung hidden"
+                >
+                  <span class="mr-2">Loading..</span>
+                  <svg
+                    class="animate-spin h-5 w-5 absolute top-1/2 right-4 -mt-1/2"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      class="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      stroke-width="4"
+                    ></circle>
+                    <path
+                      class="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 004 12H0c0 3.042 1.135 5.824 3 7.938l3-1.375zM20 12c0-3.042-1.135-5.824-3-7.938l-3 1.375A7.962 7.962 0 0020 12h4a8 8 0 01-8 8v-4zm-2-5.291l3 1.375C22.865 11.176 24 8.394 24 5.292h-4a7.962 7.962 0 00-2 5.292z"
+                    ></path>
+                  </svg>
+                </button>
               </li>
             </ul>
           </div>
@@ -42,7 +67,7 @@
       </div>
       <div class="py-[1px] bg-slate-500 opacity-80 w-full"></div>
       <!-- End Area Navbar Cek Tabungan -->
-      <div class="container mt-20">
+      <div class="container mt-20" id="area_input_menabung">
         <div class="flex flex-wrap">
           <div class="w-full self-center px-4 py-2">
             <div class="flex justify-center items-center flex-col mx-5">
@@ -140,7 +165,33 @@
           </div>
         </div>
       </div>
+      <div
+        id="modal_data_tabungan"
+        class="fixed inset-0 items-center justify-center z-50 hidden"
+      >
+        <div class="bg-slate-300 w-[80%] rounded-lg p-8 text-center lg:w-1/2">
+          <h2 class="text-xl font-bold mb-4">Informasi Tabungan</h2>
+          <div>
+            <p class="mb-2 total_tabungan">Total Tabungan:</p>
+            <p class="mb-2 sisa_tabungan">Sisa Tabungan:</p>
+            <p class="mb-2 target_fadlul">TabungTarget Fadlul:</p>
+            <p class="mb-2 target_ismu">TabungTarget Ismu:</p>
+            <p class="mb-2 total_target">Total Tabungan Target (Pizza):</p>
+            <p class="mb-2 sisa_target">Sisa Tabungan Target (Pizza):</p>
+          </div>
+          <h3 class="mt-4 font-semibold text-green-700 text-lg">
+            Semagat Terus ya Nabung nya 🤩
+          </h3>
+          <button
+            id="close_modal"
+            class="mt-4 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Tutup
+          </button>
+        </div>
+      </div>
     </section>
   </body>
   <script src="dist/js/script.js"></script>
+  <!-- <script src="dist/js/sc_firebase.js" type="module"></script> -->
 </html>
