@@ -177,18 +177,30 @@ getButtonCekTabungan.addEventListener("click", () => {
       //     " = " +
       //     dataAsosiatif.total_tabungan
       // );
-      total_tabungan.textContent =
-        "Total Tabungan : " + dataAsosiatif.total_tabungan;
-      sisa_tabungan.textContent =
-        "Sisa Tabungan: " + dataAsosiatif.sisa_tabungan;
-      target_fadlul.textContent =
-        "TabungTarget Fadlul: " + dataAsosiatif.fadlul_target;
-      target_ismu.textContent =
-        "TTabungTarget Ismu: " + dataAsosiatif.ismu_target;
-      total_target.textContent =
-        "Total Tabungan Target (Pizza): " + dataAsosiatif.total_tabung_target;
-      sisa_target.textContent =
-        "Sisa Tabungan Target (Pizza): " + dataAsosiatif.sisa_tabung_target;
+      total_tabungan.innerHTML =
+        "Total Tabungan: <span class='font-bold bg-primary px-2'>" +
+        dataAsosiatif.total_tabungan +
+        "</span>";
+      sisa_tabungan.innerHTML =
+        "Sisa Tabungan: <span class='font-bold bg-primary px-2'>" +
+        dataAsosiatif.sisa_tabungan +
+        "</span>";
+      target_fadlul.innerHTML =
+        "TabungTarget Fadlul: <span class='font-bold bg-primary px-2'>" +
+        dataAsosiatif.fadlul_target +
+        "</span>";
+      target_ismu.innerHTML =
+        "TabungTarget Ismu: <span class='font-bold bg-primary px-2'>" +
+        dataAsosiatif.ismu_target +
+        "</span>";
+      total_target.innerHTML =
+        "Total Tabungan Target (Pizza): <span class='font-bold bg-primary px-2'>" +
+        dataAsosiatif.total_tabung_target +
+        "</span>";
+      sisa_target.innerHTML =
+        "Sisa Tabungan Target (Pizza): <span class='font-bold bg-primary px-2'>" +
+        dataAsosiatif.sisa_tabung_target +
+        "</span>";
 
       loading_cektabung.classList.toggle("hidden");
       CekTabungan.classList.toggle("hidden");
