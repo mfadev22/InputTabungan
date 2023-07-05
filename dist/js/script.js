@@ -8,35 +8,61 @@ const AreaInputan = document.querySelector(".area_inputan");
 const AlertKosong = document.querySelector(".alert_kosong");
 const AlertSuccess = document.querySelector(".alert_success");
 const InputTabungan = document.querySelector("#input_tabungan");
+const InputTabunganTarget = document.querySelector("#tabung_target");
 
+const loadingSelesai = () => {
+  ButtonSubmit.classList.remove("hidden");
+  SubmitLoading.classList.add("hidden");
+
+  AreaInputan.classList.toggle("mt-10");
+  AreaInputan.classList.toggle("mt-4");
+
+  AlertSuccess.classList.toggle("hidden");
+  AlertKosong.classList.toggle("flex");
+
+  InputTabungan.value = "";
+
+  setTimeout(() => {
+    AlertSuccess.classList.toggle("hidden");
+    AreaInputan.classList.toggle("mt-10");
+    AreaInputan.classList.toggle("mt-4");
+  }, 4000);
+};
 // Input Tabungan Ke SpreadSheet
 async function fetchData() {
   const AmbilInputan = InputTabungan.value;
   var iframe = document.createElement("iframe");
   iframe.style.display = "none";
+  // ? URL BARU dengan Sistem Tabung Target
   iframe.src =
-    "https://script.google.com/macros/s/AKfycbzqgiAmpm-kw34tCEPhlBcMmUfyULA5ACFkcr1qhwo3iUhqzL_KW9t-1DiCualGZ_33/exec/" +
+    "https://script.google.com/macros/s/AKfycbyqG-WOOLG0PT_h0i2mZUYtLKQsrPply-38UvcLVhwXYWUsh3PVwzXAM1Hk_geJI3Dq/exec/" +
     AmbilInputan;
+
+  // ? URL LAMA
+  // iframe.src =
+  //   "https://script.google.com/macros/s/AKfycbzqgiAmpm-kw34tCEPhlBcMmUfyULA5ACFkcr1qhwo3iUhqzL_KW9t-1DiCualGZ_33/exec/" +
+  //   AmbilInputan;
   document.body.appendChild(iframe);
 
   iframe.onload = function () {
     console.clear();
-    ButtonSubmit.classList.remove("hidden");
-    SubmitLoading.classList.add("hidden");
+    // ButtonSubmit.classList.remove("hidden");
+    // SubmitLoading.classList.add("hidden");
 
-    AreaInputan.classList.toggle("mt-10");
-    AreaInputan.classList.toggle("mt-4");
+    // AreaInputan.classList.toggle("mt-10");
+    // AreaInputan.classList.toggle("mt-4");
 
-    AlertSuccess.classList.toggle("hidden");
-    AlertKosong.classList.toggle("flex");
+    // AlertSuccess.classList.toggle("hidden");
+    // AlertKosong.classList.toggle("flex");
 
-    InputTabungan.value = "";
+    // InputTabungan.value = "";
 
-    setTimeout(() => {
-      AlertSuccess.classList.toggle("hidden");
-      AreaInputan.classList.toggle("mt-10");
-      AreaInputan.classList.toggle("mt-4");
-    }, 4000);
+    // setTimeout(() => {
+    //   AlertSuccess.classList.toggle("hidden");
+    //   AreaInputan.classList.toggle("mt-10");
+    //   AreaInputan.classList.toggle("mt-4");
+    // }, 4000);
+    loadingSelesai();
   };
 
   //   window.location.href =
@@ -73,6 +99,34 @@ async function fetchData() {
   //   }
 }
 
+// Input Include Tabungan Target
+async function KirimTabungTarget(cekKode = null) {
+  const getInputTabungTarget = InputTabunganTarget.value;
+  if (cekKode == "fadlul") {
+    var namaTarget = "/fadlul";
+  } else {
+    var namaTarget = "/ismu";
+  }
+  var iframe_2 = document.createElement("iframe");
+  iframe_2.style.display = "none";
+  // ? URL BARU dengan Sistem Tabung Target
+  iframe_2.src =
+    "https://script.google.com/macros/s/AKfycbyqG-WOOLG0PT_h0i2mZUYtLKQsrPply-38UvcLVhwXYWUsh3PVwzXAM1Hk_geJI3Dq/exec/" +
+    getInputTabungTarget +
+    namaTarget;
+
+  document.body.appendChild(iframe_2);
+
+  iframe_2.onload = function () {
+    console.clear();
+
+    InputTabunganTarget.selectedIndex = 0;
+    if (cekKode == "fadlul") {
+      loadingSelesai();
+    }
+  };
+}
+
 // End Input Tabungan
 const handleClick = (e) => {
   const valuenya = e.target.value;
@@ -103,7 +157,17 @@ ButtonSubmit.addEventListener("click", function () {
     //   ButtonSubmit.classList.toggle("hidden");
     //   SubmitLoading.classList.toggle("hidden");
     // }, 3000);
-    fetchData();
+    const CekInputan = InputTabungan.value;
+    if (
+      CekInputan == "280706" ||
+      CekInputan == "231098" ||
+      CekInputan == "230399"
+    ) {
+      KirimTabungTarget("fadlul");
+    } else {
+      KirimTabungTarget();
+      fetchData();
+    }
   } else {
     InputTabungan.classList.remove("border-primary");
     InputTabungan.classList.add("border-red-500");
