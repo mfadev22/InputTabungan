@@ -194,6 +194,7 @@ const sisa_tabungan = document.querySelector(".sisa_tabungan");
 const target_fadlul = document.querySelector(".target_fadlul");
 const target_ismu = document.querySelector(".target_ismu");
 const total_target = document.querySelector(".total_target");
+const sisa_target_pizza = document.querySelector(".sisa_target_pizza");
 const sisa_target = document.querySelector(".sisa_target");
 
 const loading_cektabung = document.querySelector(".loading_cektabung");
@@ -203,7 +204,7 @@ getButtonCekTabungan.addEventListener("click", () => {
   loading_cektabung.classList.toggle("hidden");
   let SHEET_ID = "1lilLxrKIz1Zcu1ScSxTU5oyhSXPVBlrEGgnalGTI_ac";
   let SHEET_TITLE = "Total_dan_Pengeluaran";
-  let SHEET_RANGE = "I2:J7";
+  let SHEET_RANGE = "I2:J8";
 
   let FULL_URL =
     "https://docs.google.com/spreadsheets/d/" +
@@ -256,6 +257,10 @@ getButtonCekTabungan.addEventListener("click", () => {
       target_ismu.innerHTML =
         "TabungTarget Ismu: <span class='font-bold bg-primary px-2'>" +
         dataAsosiatif.ismu_target +
+        "</span>";
+      sisa_target_pizza.innerHTML =
+        "Total Tabungan Target (Pizza): <span class='font-bold bg-primary px-2'>" +
+        dataAsosiatif.sisa_tabung_target_pizza +
         "</span>";
       total_target.innerHTML =
         "Total Tabungan Target (Malang): <span class='font-bold bg-primary px-2'>" +
