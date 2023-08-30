@@ -259,7 +259,7 @@ getButtonCekTabungan.addEventListener("click", () => {
         dataAsosiatif.ismu_target +
         "</span>";
       sisa_target_pizza.innerHTML =
-        "Total Tabungan Target (Pizza): <span class='font-bold bg-primary px-2'>" +
+        "Sisa Tabungan Target (Pizza): <span class='font-bold bg-primary px-2'>" +
         dataAsosiatif.sisa_tabung_target_pizza +
         "</span>";
       total_target.innerHTML =
